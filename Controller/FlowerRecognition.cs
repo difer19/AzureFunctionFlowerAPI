@@ -40,7 +40,7 @@ namespace AzureFunctionFlowerAPI.Controller
             const bool noReject = false;
             const int nbResults = 2;
             const string lang = "es";
-            const string apiKey = "2b10OtVQOBGaduoPpbFSQn0nu";
+            const string apiKey = "api-key";
 
             // Validacion de imagen en el body
             var formFiles = req.Form.Files;
@@ -49,7 +49,7 @@ namespace AzureFunctionFlowerAPI.Controller
                 return new BadRequestObjectResult("No se ha enviado una imagen");
             }
 
-            // Crear el request multipart/form-data para la API de identificación
+            // Crear el request multipart/form-data para la API de identificaciÃ³n
             var requestContent = new MultipartFormDataContent();
             foreach (var formFile in formFiles)
             {
@@ -76,7 +76,7 @@ namespace AzureFunctionFlowerAPI.Controller
 
             dynamic jsonResponse = JsonConvert.DeserializeObject(responseContent);
 
-            // Mapear la información importante a la clase
+            // Mapear la informaciÃ³n importante a la clase
             var bestMatch = jsonResponse.results[0];  // Asumiendo que el primer resultado es el mejor
             var plantResult = new PlantIdentificationResult
             {
@@ -95,7 +95,7 @@ namespace AzureFunctionFlowerAPI.Controller
                 });
             }
 
-            // Devolver la información mapeada
+            // Devolver la informaciÃ³n mapeada
             return new OkObjectResult(plantResult);
 
         }
